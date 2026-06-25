@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Disc golf app</title>
+<link rel="stylesheet" href="discgolf.css">
+<link rel="manifest" href="manifest.json">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Local Route">
+<meta name="theme-color" content="#fea019">
+</head>
+
+<body>
+
+<main id="appContainer">
+
+<!-- Section = Menu screen -->
+<section id="menuScreen" class="screen">
+<h1 class="titleMenuScreen">Local</h1>
+<h1 class="titleMenuScreen2">Route</h1>
+<img id="menuThumbnail" src="thumbnails/menubillede5.png">
+<button id="pickCourseButton">Vælg bane</button>
+<!-- <button id="savedGamesButton">Tidligere spil</button> -->
+</section>
+
+<!-- Section = Course selection screen -->
+<section id="courseSelectionScreen" class="screen hidden">
+<div class="courseGrid">
+<h1 id="titelCourseSelection"></h1>
+<div class="courseCard courseCardValby" data-course="valby">
+<h2 id="valbyTitelCourseSelection">Valby</h2>
+<img id="courseMapValbyThumbnail" src="thumbnails/valbyorangediscgolf.png" alt="courseMapValbySelectionAlt">
+</div>
+</div>
+</section>
+
+<!-- Section = Player setup screen -->
+<section id="playerSetupScreen" class="screen hidden">
+<img id="bird1Icon" src="thumbnails/bird1.png">
+<img id="bird2Icon" src="thumbnails/bird2.png">
+<div id="playerSetupContainer">
+<div id="playerSetupInfo">
+<h1 id="playerSetupTitle">Tilføj spillere</h1>
+<!-- Player name input -->
+<input placeholder="Navn for spiller 1" id="player1NameInput" class="playerNameInputs">
+<input placeholder="Navn for spiller 2" id="player2NameInput" class="playerNameInputs hidden">
+<!-- Save/start buttons -->
+<button id="addPlayerInputButton">+</button>
+<button id="removePlayerInputButton">-</button>
+<div class="saveButtonContainer">
+<button id="savePlayersButton" class="savePlayersButtons">Start runden</button>
+<p id="savePlayersButtonText"></p>
+<p id="savePlayersErrorText" class="message"></p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Section = Hole overview screen -->
+<section id="holeOverviewScreen" class="screen hidden">
+<div id="holeOverviewGrid" class="holeOverviewGrid">
+<div class="holeOverviewButtonContainer">
+<div id="holeCard1" data-course="holeCard1">
+<button class="hulButtons"><img id="hole1OverviewButton" src="thumbnails/hul1.png"></button>
+<button class="hulButtons"><img id="hole2OverviewButton" src="thumbnails/hul2.jpg"></button>
+<button class="hulButtons"><img id="hole3OverviewButton" src="thumbnails/hul3.jpg"></button>
+<button class="hulButtons"><img id="hole4OverviewButton" src="thumbnails/hul4.jpg"></button>
+<button class="hulButtons"><img id="hole5OverviewButton" src="thumbnails/hul5.jpg"></button>
+<button class="hulButtons"><img id="hole6OverviewButton" src="thumbnails/hul6.png"></button>
+<button class="hulButtons"><img id="hole7OverviewButton" src="thumbnails/hul7.png"></button>
+<button class="hulButtons"><img id="hole8OverviewButton" src="thumbnails/hul8.png"></button>
+<button class="hulButtons"><img id="hole9OverviewButton" src="thumbnails/hul9.png"></button>
+<button class="hulButtons"><img id="hole10OverviewButton" src="thumbnails/hul10.jpg"></button>
+<button class="hulButtons"><img id="hole11OverviewButton" src="thumbnails/hul11.jpg"></button>
+<button class="hulButtons"><img id="hole12OverviewButton" src="thumbnails/hul12.png"></button>
+<button class="hulButtons"><img id="hole13OverviewButton" src="thumbnails/hul13.jpg"></button>
+<button class="hulButtons"><img id="hole14OverviewButton" src="thumbnails/hul14.png"></button>
+<button class="hulButtons"><img id="hole15OverviewButton" src="thumbnails/hul15.jpg"></button>
+<button class="hulButtons"><img id="hole16OverviewButton" src="thumbnails/hul16.png"></button>
+<button class="hulButtons"><img id="hole17OverviewButton" src="thumbnails/hul17.jpg"></button>
+<button class="hulButtons"><img id="hole18OverviewButton" src="thumbnails/hul18.jpg"></button>
+</div>
+</div>
+<button id="backToMapButton"><p id="backToMapText">Tilbage</p></button>
+</div> 
+</section>
+
+<!-- Section = Coursemap and hole buttons -->
+<section id="courseMapScreen" class="screen hidden">
+<button id="menuCourseMapButton">Menu</button>
+<button id="scoreButton">Score</button>
+<div class="mapContainer">
+<img id="coursemap-valby" class="coursemap" src="thumbnails/banekort_valby.jpg">
+<!-- hole buttons -->
+<div class="holeButtons">
+<button id="hole1Button" class="holeButton">1</button>
+<button id="hole2Button" class="holeButton">2</button>
+<button id="hole3Button" class="holeButton">3</button>
+<button id="hole4Button" class="holeButton">4</button>
+<button id="hole5Button" class="holeButton">5</button>
+<button id="hole6Button" class="holeButton">6</button>
+<button id="hole7Button" class="holeButton">7</button>
+<button id="hole8Button" class="holeButton">8</button>
+<button id="hole9Button" class="holeButton">9</button>
+<button id="hole10Button" class="holeButton">10</button>
+<button id="hole11Button" class="holeButton">11</button>
+<button id="hole12Button" class="holeButton">12</button>
+<button id="hole13Button" class="holeButton">13</button>
+<button id="hole14Button" class="holeButton">14</button>
+<button id="hole15Button" class="holeButton">15</button>
+<button id="hole16Button" class="holeButton">16</button>
+<button id="hole17Button" class="holeButton">17</button>
+<button id="hole18Button" class="holeButton">18</button>
+</div>
+</div>
+<!-- Modal / Overlay -->
+<!-- Reset Modal Menu Screen / Overlay -->
+<div id="resetMenuOverlay" class="hidden">
+<div id="resetMenuModal">
+<div id="resetMenuContainer">
+<p id="resetMenuSureText">Vil du afslutte?</p>
+<button id="jaMenuResetButton">Ja</button>  
+<button id="nejMenuResetButton">Nej</button>  
+</div> 
+</div>
+</div>
+<!-- Menu Modal / Overlay -->
+<div id="menuOverlay" class="hidden">
+<div id="modalMenu">
+<h1 id="menuModalTitle">Local Route</h1>
+<img id="menuModalIcon" src="thumbnails/menuicon3.png" alt="Billede af basket">
+<div id="menuContainer">
+<div id="modalMenuButtonContainer">
+<button id="openResetModal">Reset</button>
+<button id="openHoleOverviewButton" class="holeOverviewButton">Alle huller</button>
+<button id="backToMenuButton">Hovedmenu</button>
+<button id="backToCourseMapButton">Tilbage</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Reset Modal / Overlay -->
+<div id="resetOverlay" class="hidden">
+<div id="resetModal">
+<div id="resetContainer">
+<p id="resetSureText">Vil du starte forfra?</p>
+<button id="resetButton" class="jaResetButton">Ja</button>  
+<button id="nejResetButton">Nej</button>  
+</div> 
+</div>
+</div>
+<!-- Score modal / Overlay -->
+<div id="scoreOverlay" class="hidden">
+<div id="scoreModal">
+<button id="scoreBackButton">Tilbage</button>
+<div id="scoreContainer">
+<p id="scorePlayer1Text"></p>
+<p id="scorePlayer2Text"></p>
+<!-- Messages and total (sum) Player 1 -->
+<div id="scorePlayer1">
+<p>Total kast: <span id="totalThrowsTextPlayer1">0</span></p>
+<p>Total par: <span id="totalParTextPlayer1">0</span></p>
+<p><span id="scoreTextPlayer1"> Score: </span> <span id="scoreToParTextPlayer1">0</span></p>
+</div>
+<!-- Messages and total (sum) Player 2 -->
+<div id="scorePlayer2">
+<p>Total kast: <span id="totalThrowsTextPlayer2">0</span></p>
+<p>Total par: <span id="totalParTextPlayer2">0</span></p>
+<p><span id="scoreTextPlayer2"> Score: </span><span id="scoreToParTextPlayer2">0</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Save Score Modal / Overlay -->
+<div id="saveScoreOverlay" class="hidden">
+<div id="saveScoreModal">
+<img id="holeDetailImage" src ="" alt="Billede af hul">
+<button id="closeSaveScoreOverlayButton">Luk</button>
+<button id="closeSaveScoreOverviewButton" class="hidden">Luk</button>
+<!-- Player button and messages -->
+<button id="modalSaveScoreButton" class="modalSaveScoreButtons">Gem score</button>
+<button id="modalSaveScoreOverviewButton" class="hidden">Gem score</button>
+<div class="playerContainer">
+<p id="player1NameText" class="playerNameTexts"></p>
+<p id="player2NameText" class="playerNameTexts"></p>
+</div>
+<div class="parButtonContainer">
+<button id="player1ParButton">Par</button>
+<button id="player2ParButton">Par</button>
+</div>
+<div class="inputContainer">
+<input type="number" min="1" placeholder="0" id="throwsInput1" class="js-throwsInput1">
+<input type="number" min="1" placeholder="0" id="throwsInput2" class="js-throwsInput2">
+</div>
+<p id="saveScoreTextElement" class="messageTextSaveScore">Vælg antal kast</p>
+</div>
+</div>
+</section>
+
+<script src="discgolf.js"></script>
+
+</main>
+</body>
+</html>

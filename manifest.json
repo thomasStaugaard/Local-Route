@@ -1,0 +1,20 @@
+{
+"name": "Local Route",
+"short_name": "Local Route",
+"start_url": "./index.html",
+"display": "standalone",
+"background_color": "#fea019",
+"theme_color": "#fea019",
+"icons": [
+{
+"src": "thumbnails/icon-192.png",
+"sizes": "192x192",
+"type": "image/png"
+},
+{
+"src": "thumbnails/icon-512.png",
+"sizes": "512x512",
+"type": "image/png"
+}
+]
+}

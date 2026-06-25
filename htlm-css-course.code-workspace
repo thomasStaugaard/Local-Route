@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../htlm-css-course"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../Odin Project Course"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Javascript Course"
+	}
+}

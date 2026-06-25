@@ -1,0 +1,1405 @@
+html,
+body {
+margin: 0;
+padding: 0;
+width: 100%;
+background-color: black;
+}
+
+input,
+textarea,
+select {
+font-size: 16px;
+}
+
+#throwsInput1,
+#throwsInput2 {
+font-size: 16px;
+}
+
+.screen {
+min-height: 100dvh;
+box-sizing: border-box;
+}
+
+#appContainer {
+width: 100%;
+max-width: 430px;
+min-height: 100vh;
+margin: 0 auto;
+overflow-x: hidden;
+background-color: rgb(254, 136, 25);
+}
+
+.mapContainer {
+position: relative;
+width: 100%;
+max-width: 430px;
+margin: 0 auto;
+}
+
+/* App Layout / Screens */
+
+.hidden {
+display: none;
+}
+
+#saveScoreOverlay.hidden {
+display: none;
+}
+
+#menuOverlay.hidden {
+display: none;
+}
+
+#holeOverviewScreen.hidden {
+display: none;
+}
+
+#resetOverlay.hidden {
+display: none;
+}
+
+#scoreOverlay.hidden {
+display: none;
+}
+
+#resetMenuOverlay.hidden {
+display: none;
+}
+
+.screen {
+min-height: 100vh;
+opacity: 1;
+transition: opacity 2s ease;
+background-color: rgb(254, 136, 25);
+}
+
+.fadeOut {
+opacity: 0;
+}
+
+/* Menu Screen */
+
+#menuScreen {
+background-color: black;
+}
+
+#menuThumbnail {
+position: relative;
+width: 400px;
+height: 670px;
+right: 10px;
+background-repeat: no-repeat;
+z-index: 0;
+}
+
+.titleMenuScreen {
+font-size: 66px;
+color: rgb(255, 217, 103);
+-webkit-text-stroke: 0px black;
+text-shadow: 1.5px 2.5px 0px rgb(254, 136, 25);
+position: absolute;
+z-index: 6;
+left: 30%;
+top: 4.5%;
+}
+
+.titleMenuScreen2 {
+font-size: 88px;
+color: rgb(255, 217, 103);
+-webkit-text-stroke: 0px black;
+text-shadow: 2.5px 2.5px 0px rgb(254, 136, 25);
+position: absolute;
+z-index: 6;
+left: 21%;
+top: 10%;
+}
+
+#pickCourseButton {
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 19px;
+color: rgb(254, 136, 25);
+box-shadow: 2.5px 2.7px 1px rgb(254, 136, 25);
+letter-spacing: 1px;
+padding-bottom: 4px;
+width: 160px;
+height: 40px;
+border-radius: 10px;
+border: none;
+position: absolute;
+background:rgb(255, 217, 103);
+left: 29%;
+top: 43%;
+}
+
+#pickCourseButton:hover {
+cursor: pointer;
+}
+
+
+#savedGamesButton {
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 19px;
+letter-spacing: 1px;
+padding-bottom: 5px;
+width: 160px;
+height: 40px;
+border-radius: 10px;
+border: none;
+position: absolute;
+background: rgba(255, 201, 40, 0.8);
+left: 41%;
+top: 33.5%;
+}
+
+
+#pickCourseButton:hover {
+cursor: pointer;  
+}
+
+/* Course Select Screen */
+
+#courseSelectionScreen {
+position: relative;
+flex-direction: flex;
+background-image: url("thumbnails/skyer3.png");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+overflow-y: auto;
+}
+
+.courseCard {
+position: relative;
+width: 180px;
+height: 140px;
+overflow: hidden;
+border-radius: 25px;
+margin-left: 10px;
+margin-top: -20px;
+border: 3px solid white;
+}
+
+#courseMapValbyThumbnail {
+object-fit: cover;
+width: 180px;
+height: 140px;
+display: block;
+filter: blur(2px);
+border-radius: 25px;
+background: rgba(255, 255, 255, 0.2);
+}
+
+#valbyTitelCourseSelection {
+position: absolute;
+bottom: 9%;
+left: 21%;
+font-size: 38px;
+letter-spacing: 2px;
+color: rgb(255, 217, 103);
+text-shadow: 0.5px 2px 2px rgb(254, 136, 25);
+z-index: 100;
+border-radius: 25px;
+}
+
+.courseCard::after {
+content: "";
+position: absolute;
+inset: 0;
+border-radius: 25px;
+background: linear-gradient(
+to bottom,
+rgba(0, 0, 0, 0.40),
+rgba(0, 0, 0, 0.010)
+);
+}
+
+.courseCard:hover #courseMapValbyThumbnail {
+cursor: pointer;
+filter: blur(1.2px);
+transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+.courseCard:hover {
+cursor: pointer;
+}
+
+.courseGrid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 16px;
+}
+
+/* Player Setup Screen */
+
+/* Tablet/desktop */
+@media (min-width: 768px) {
+#playerSetupContainer {
+max-width: 500px;
+}
+}
+
+#playerSetupScreen {
+position: relative;
+min-height: 100dvh;
+background-color: rgba(255, 201, 40);
+background-image: url("thumbnails/skyer3.png");
+background-size: inherit;
+background-repeat: no-repeat;
+padding-top: env(safe-area-inset-top);
+box-sizing: border-box;
+overflow: hidden;
+}
+
+#savePlayersErrorText {
+position: absolute;
+min-height: 24px;
+top: 25%;
+left: 50%;
+transform: translateX(-50%);
+width: 90%;
+min-height: 24px;
+margin: 0;
+color: white;
+text-align: center;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 15px;
+letter-spacing: 1px;
+}
+
+#playerSetupContainer {
+position: absolute;
+left: 50%;
+top: 17%;
+transform: translateX(-50%);
+width: min(88%, 360px);
+min-height: 450px;
+background-color: rgb(254, 136, 25);
+border-radius: 25px;
+box-sizing: border-box;
+padding: 19px 24px;
+}
+
+#playerSetupInfo {
+width: 100%;
+height: 100%;
+min-height: 390px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#player1NameInput::placeholder {
+color: rgb(254, 136, 25);
+}
+
+#player2NameInput::placeholder {
+color: rgb(254, 136, 25);
+}
+
+.playerNameInputs {
+color: rgb(254, 136, 25);
+width: min(75%, 190px);
+height: 40px;
+text-align: center;
+border: none;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 2px;
+border-radius: 25px;
+box-sizing: border-box;
+margin-bottom: 16px;
+}
+
+#player1NameInput {
+left: 23.5%;
+top: 40%;
+}
+
+#player2NameInput {
+left: 23.5%;
+top: 52%;
+}
+
+#addPlayerInputButton,
+#removePlayerInputButton {
+position: absolute;
+top: 180px;
+color: rgb(254, 136, 25);
+background-color: white;
+height: 40px;
+width: 50px;
+border: 2px solid white;
+border-radius: 20px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#addPlayerInputButton.isPlayerSelected {
+color: white;
+background-color: rgb(254, 136, 25);
+cursor: pointer;
+}
+
+#addPlayerInputButton:hover {
+color: white;
+background-color: rgb(254, 136, 25);
+cursor: pointer;
+}
+
+#addPlayerInputButton {
+left: 18px;
+font-size: 20px;
+}
+
+#removePlayerInputButton {
+right: 15px;
+font-size: 24px;
+line-height: 20px;
+padding-bottom: 6px;
+}
+
+#playerSetupTitle {
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+color: rgb(255, 217, 103);
+font-size: clamp(32px, 10vw, 50px);
+letter-spacing: 2px;
+white-space: nowrap;
+margin-bottom: 91px;
+}
+
+#savePlayersButton {
+position: absolute;
+margin-top: auto;
+top: 80%;
+left: 32%;
+color: rgb(254, 136, 25);
+background-color: white;
+height: 42px;
+width: min(99%, 120px);  
+border: 2px solid  white;
+border-radius: 20px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 15px;
+}
+
+#savePlayersButton:hover {
+cursor: pointer;
+}
+
+#bird1Icon {
+position: absolute;
+width: clamp(60px, 18vw, 90px);
+height: auto;
+left: 8%;
+top: calc(env(safe-area-inset-top) + 9.3%);
+z-index: 22;
+}
+
+#bird2Icon {
+position: absolute;
+width: clamp(80px, 24vw, 120px);
+height: auto;
+right: 6%;
+top: calc(env(safe-area-inset-top) + 7.3%);
+z-index: 22
+}
+
+
+#playerSetupInfo {
+min-height: 420px;
+}
+
+.playerNameInputs {
+width: 180px;
+}
+
+#addPlayerInputButton {
+left: 15px;
+}
+
+#removePlayerInputButton {
+right: 15px;
+}
+
+/* Map Screen */
+
+.mapContainer {
+position: absolute;
+width: min(100%, 430px);
+margin: 0 auto;
+left: 1%
+}
+
+#courseMapScreen {
+position: relative;
+min-height: 100dvh;
+background-color: rgb(254, 136, 25);
+padding-top: calc(env(safe-area-inset-top) + 90px);
+box-sizing: border-box;
+background-image: url("thumbnails/skyer3.png");
+}
+
+.coursemap {
+width: min(57vh, 620px);
+border: 2px solid white;
+border-radius: 15px;
+height: min(82vh, 620px);
+display: block;
+box-sizing: border-box;
+}
+
+.holeButton {
+position: absolute;
+font-size: 12px;
+border-radius: 50px;
+width: 24px;
+height: 24px;
+text-align: center;
+background: rgb(254, 136, 25);
+color: rgb(255, 255, 255);
+border: 2px solid white;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+z-index: 3;
+}
+
+#menuCourseMapButton {
+position: absolute;
+left: 1%;
+top: 4%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 2px;
+padding-bottom: 4px;
+font-size: 19px;
+color: white;
+border: 1px solid white;
+width: 180px;
+height: 50px;
+border-radius: 10px;
+background-color: rgba(254, 136, 25);
+}
+
+#menuCourseMapButton:hover {
+background-color: rgba(254, 136, 25);
+color: white;
+opacity: 1;
+cursor: pointer;
+}
+
+#scoreButton {
+position: absolute;
+right: 1%;
+top: 4%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 2px;
+padding-bottom: 4px;
+font-size: 19px;
+color: white;
+border: 1px solid white;
+width: 180px;
+height: 50px;
+border-radius: 10px;
+background-color: rgba(254, 136, 25);
+}
+
+
+#scoreButton:hover {
+background-color:rgba(254, 136, 25);
+color: white;
+opacity: 1;
+cursor: pointer;
+}
+
+.selectedHole {
+border-color: rgb(254, 136, 25);
+border-width: 2px;
+color: rgb(254, 136, 25);
+background-color:  white;
+}
+
+.completedHole {
+background-color: rgb(0, 0, 0);
+color: white;
+border-color: white;
+}
+
+.holeButton:hover {
+cursor: pointer;
+}
+
+#hole1Button {
+right: 11%;
+bottom: 5.8%;
+}
+
+#hole2Button {
+left: 8.5%;
+bottom: 9%;
+}
+
+#hole3Button {
+left: 20%;
+bottom: 30.2%;
+}
+
+#hole4Button {
+padding: 1px;
+left: 10%;
+top: 46.8%;
+}
+
+#hole5Button {
+top: 28.5%;
+left: 39.8%;
+}
+
+#hole6Button {
+top: 40%;
+left: 30%;
+}
+
+#hole7Button {
+padding-left: 7px;
+bottom: 13%;
+right: 35%;
+}
+
+#hole8Button {
+bottom: 35.9%;
+left: 35%;
+}
+
+#hole9Button {
+right: 11.1%;
+bottom: 11%;
+}
+
+#hole10Button {
+padding-left: 3.5px;
+right: 2.8%;
+bottom: 16%;
+}
+
+#hole11Button {
+padding-left: 1px;
+padding-right: 2px;
+right: 4.8%;
+top: 27.2%;
+}
+
+#hole12Button {
+padding-left: 2.5px;
+right: 26%;
+top: 21.5%;
+}
+
+#hole13Button {
+
+padding-left: 3px;
+right: 32%;
+bottom: 44.7%;
+}
+
+#hole14Button {
+padding-left: 2.6px;
+top: 39%;
+left: 0.9%;
+}
+
+#hole15Button {
+padding-left: 2.5px;
+left: 21%;
+top: 19.9%;
+}
+
+#hole16Button {
+padding-left: 3px;
+left: 54.3%; 
+top: 0.6%;
+}
+
+#hole17Button {
+padding-left: 3px;
+right: 16.7%;
+top: 17%;
+}
+
+#hole18Button {
+padding-left: 2.7px;
+right: 14%;
+top: 40%;
+}
+
+
+/* Hole Overview Screen */
+
+#holeOverviewScreen {
+position: relative;
+min-height: 100vh;
+display: flex;
+flex-direction: flex;
+background-color: rgba(254, 136, 25);
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+overflow-y: auto;
+}
+
+.hulButtons {
+object-fit: cover;
+width: 90px;
+height: 90px;
+border-radius: 100px;
+background-color:  rgba(254, 136, 25);
+outline: none;
+border: none;
+}
+
+#backToMapText {
+position: absolute;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+color: rgba(254, 136, 25);
+left: 29%;
+font-size: 20px;
+}
+
+#backToMapButton {
+position: absolute;
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 1px;
+padding-bottom: 4px;
+font-size: 19px;
+color: white;
+border: 2px solid white;
+width: 150px;
+height: 40px;
+left: 30%;
+top: 1.5%; 
+border-radius: 10px;
+background-color: white;
+}
+
+#backToMapButton:hover {
+cursor: pointer;
+}
+
+#holeOverviewGrid {
+flex: 1;
+margin-left: 30px;
+margin-top: 60px;
+overflow-y: auto;
+}
+
+#holeCard1 {
+display: grid;
+grid-template-columns: repeat(3, 100px);
+gap: 14px;
+row-gap: 5px;
+z-index: 30;
+}
+
+#holeCard1 img {
+object-fit: cover;
+width: 90px;
+height: 90px;
+border-radius: 100px;
+}
+
+.completedHoleOverview {
+filter: contrast(100%) grayscale(100%);
+}
+
+
+.holeOverviewButtonContainer {
+position: absolute;
+left: 3%;
+width: fit-content;
+height: fit-content;
+gap: 12px;
+border: 2px solid white;
+width: 335px;
+height: 575px;
+border-radius: 25px;
+padding-top: 5px;
+padding-left: 8px;
+margin-right: 5px;
+}
+
+/* Modal / Overlay */
+
+#saveScoreOverlay {
+position: fixed;
+inset: 0;
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+background: rgba(255, 255, 255, 0.1);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 101;
+padding: 20px;
+box-sizing: border-box;
+}
+
+#openResetModal {
+position: absolute;
+left: 19%;
+top: 60%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 2px;
+padding-bottom: 4px;
+font-size: 19px;
+color: rgba(254, 136, 25, 0.80);
+border: 2px solid white;
+width: 160px;
+height: 40px;
+border-radius: 10px;
+background-color: white;
+}
+
+#openResetModal:hover {
+background:  rgba(254, 136, 25, 0.80);
+color: white;
+opacity: 1;
+cursor: pointer;
+}
+
+#saveScoreModal {
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+width: min(88vw, 360px);
+height: min(70dvh, 520px);
+background-color: rgb(254, 136, 25);
+border-radius: 25px;
+border: 2px solid white;
+box-sizing: border-box;
+}
+
+.playerContainer {
+display: flex;
+}
+
+.activePlayer {
+color: rgb(254, 136, 25);
+background-color: white;
+}
+
+.messageTextSaveScore {
+position: absolute;
+left: 50%;
+bottom: 29%;
+transform: translateX(-50%);
+width: 88%;
+height: 30px;
+color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: clamp(16px, 4vw, 18px);
+border-radius: 25px;
+background-color: rgb(254, 136, 25);
+}
+
+#throwsInput1,
+#throwsInput2 {
+position: absolute;
+width: 64px;
+height: 31px;
+box-sizing: border-box;
+padding: 0;
+margin: 0;
+border: none;
+border-radius: 20px;
+font-size: 16px;
+line-height: 30px;
+text-align: center;
+color: black;
+-webkit-text-fill-color: black;
+background-color: white;
+appearance: none;
+-webkit-appearance: none;
+}
+
+#throwsInput1 {
+bottom: 14.2%;
+left: 27%;
+}
+
+#throwsInput2 {
+bottom: 14.2%;
+right: 6.3%;
+}
+
+#throwsInput1::placeholder {
+color: black;
+}
+
+#throwsInput2::placeholder {
+color: black;
+}
+
+input:focus {
+outline: none;
+outline-offset: -4px;
+}
+
+#holeDetailImage {
+position: absolute;
+width: min(78%, 260px);
+aspect-ratio: 1 / 1;
+height: auto;
+object-fit: cover;
+border-radius: 50%;
+top: 4%;
+left: 50%;
+transform: translateX(-50%);
+}
+
+#saveScoreTextElement {
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 1px;
+}
+
+#modalSaveScoreButton {
+position: absolute;
+color: white;
+gap: 15px;
+height: 35px;  
+width: 135px;
+border: 2px solid  white;
+background: rgb(254, 136, 25);
+border-radius: 20px;
+bottom: 5%;
+right: 6%;
+z-index: 88;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 16px;
+}
+
+#modalSaveScoreButton:hover {
+cursor: pointer;
+color: rgb(254, 136, 25);
+background-color: white;
+}
+
+#modalSaveScoreOverviewButton {
+position: absolute;
+color: white;
+gap: 15px;
+height: 35px;  
+width: 135px;
+border: 2px solid  white;
+background: rgb(254, 136, 25);
+border-radius: 20px;
+bottom: 5%;
+right: 6%;
+z-index: 88;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 16px;
+}
+
+#modalSaveScoreOverviewButton:hover {
+cursor: pointer;
+color: rgb(254, 136, 25);
+background-color: white;
+}
+
+#closeSaveScoreOverlayButton {
+position: absolute;
+color: white;
+gap: 15px;
+height: 35px;  
+width: 135px;
+border: 2px solid  white;
+background: rgb(254, 136, 25);
+border-radius: 20px;
+bottom: 5%;
+left: 6%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 16px;
+}
+
+#closeSaveScoreOverlayButton:hover {
+cursor: pointer;
+color: rgb(254, 136, 25);
+background-color: white;
+}
+
+#closeSaveScoreOverviewButton {
+position: absolute;
+color: white;
+gap: 15px;
+height: 35px;  
+width: 135px;
+border: 2px solid  white;
+background: rgb(254, 136, 25);
+border-radius: 20px;
+bottom: 5%;
+left: 6%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 16px;
+}
+
+#closeSaveScoreOverviewButton:hover {
+cursor: pointer;
+color: rgb(254, 136, 25);
+background-color: white;
+}
+
+#player1NameText,
+#player2NameText {
+position: absolute;
+bottom: 19%;
+width: 40%;
+height: 25px;
+color: white;
+text-align: center;
+font-size: clamp(16px, 4vw, 18px);
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 2px;
+}
+
+#player1NameText {
+left: 6%;
+}
+
+#player2NameText {
+right: 6%;
+}
+
+#player1ParButton,
+#player2ParButton {
+position: absolute;
+color: white;
+gap: 15px;
+height: 32px;  
+width: 62px;
+border: 2px solid  white;
+background: rgb(254, 136, 25);
+border-radius: 20px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 16px;
+}
+
+#player1ParButton:hover,
+#player2ParButton:hover {
+cursor: pointer;
+color: rgb(254, 136, 25);
+background-color: white;
+}
+
+#player1ParButton {
+bottom: 14%;
+left: 6.2%;
+}
+
+#player2ParButton {
+bottom: 14%;
+right: 27.9%;
+}
+
+#modalContainer1 {
+position: absolute;
+bottom: 10%;
+left: 50%;
+height: 47px;
+width: 190px;
+background-color: transparent;
+border-radius: 25px;
+}
+
+/* Menu Modal / Overlay */
+
+#menuOverlay {
+position: fixed;
+inset: 0;
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+background: rgba(255, 255, 255, 0.1);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 10;
+}
+
+#menuModalTitle {
+position: absolute;
+font-size: 36px;
+top: 31%;
+left: 7.5%;
+color: white;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+color: rgb(255, 217, 103);
+-webkit-text-stroke: 0px black;
+text-shadow: 0.5px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+#modalMenu {
+position: absolute;
+display: flex;
+left: 16.8%;
+top: 15%;
+width: 250px;
+height: 450px;
+background-color: rgb(254, 136, 25);
+border-radius: 25px;
+outline: 2px solid white;
+}
+
+#menuModalIcon {
+position: absolute;
+width: 140px;
+height: 140px;
+left: 23.5%;
+top: 4.5%;
+}
+
+.holeOverviewButton {
+position: absolute;
+z-index: 2;
+left: 19%;
+top: 50%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 2px;
+padding-bottom: 4px;
+font-size: 19px;
+color: rgba(254, 136, 25, 0.80);
+border: 2px solid white;
+width: 160px;
+height: 40px;
+border-radius: 10px;
+background-color: white;
+}
+
+.holeOverviewButton:hover {
+background-color: rgba(254, 136, 25);
+color: white;
+opacity: 1;
+cursor: pointer;
+}
+
+#backToMenuButton {
+position: absolute;
+left: 19%;
+top: 70%;
+z-index: 2;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 2px;
+padding-bottom: 4px;
+font-size: 19px;
+color: rgba(254, 136, 25, 0.80);
+border: 2px solid white;
+width: 160px;
+height: 40px;
+border-radius: 10px;
+background-color: white;
+}
+
+#backToMenuButton:hover {
+background: rgba(254, 136, 25, 0.80);
+color: white;
+opacity: 1;
+cursor: pointer;
+}
+
+#backToCourseMapButton {
+position: absolute;
+left: 19%;
+top: 80%;
+z-index: 2;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 2px;
+padding-bottom: 4px;
+font-size: 19px;
+color: rgba(254, 136, 25, 0.80);
+border: 2px solid white;
+width: 160px;
+height: 40px;
+border-radius: 10px;
+background-color: white;
+}
+
+#backToCourseMapButton:hover {
+background: rgba(254, 136, 25, 0.80);
+color: white;
+opacity: 1;
+cursor: pointer;
+}
+
+/* Reset Modal / Overlay */
+
+#resetOverlay {
+position: fixed;
+inset: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 10;
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+background: rgba(255, 255, 255, 0.1);
+}
+
+#resetSureText {
+position: absolute;
+font-size: 29px;
+top: 10%;
+left: 12.5%;
+color: white;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+color: rgb(255, 217, 103);
+-webkit-text-stroke: 0px black;
+text-shadow: 0.5px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+#resetContainer {
+position: absolute;
+right: 9.5%;
+top: 35%;
+width: 300px;
+height: 200px;
+background-color: rgba(254, 136, 25);
+border: 2px solid white;
+border-radius: 25px;
+}
+
+.jaResetButton {
+position: absolute;
+left: 10%;
+bottom: 20%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+padding-bottom: 4px;
+font-size: 19px;
+color: rgba(254, 136, 25, 0.80);
+border: 2px solid white;
+width: 110px;
+height: 40px;
+border-radius: 10px;
+background-color: white;
+}
+
+.jaResetButton:hover {
+cursor: pointer;
+background-color: rgba(254, 136, 25, 0.80);
+color: white;
+}
+
+#nejResetButton {
+position: absolute;
+right: 10%;
+bottom: 20%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+padding-bottom: 4px;
+font-size: 19px;
+color: rgba(254, 136, 25, 0.80);
+border: 2px solid white;
+width: 110px;
+height: 40px;
+border-radius: 10px;
+background-color: white;
+}
+
+#nejResetButton:hover {
+cursor: pointer;
+background-color: rgba(254, 136, 25, 0.80);
+color: white;
+}
+
+/* Score Overlay / Modal */
+
+#scoreOverlay {
+position: fixed;
+inset: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 10;
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+background: rgba(255, 255, 255, 0.1);
+}
+
+#scoreToParTextPlayer1,
+#scoreToParTextPlayer2 {
+color: white;
+padding: 2px;
+font-size: 19px;
+}
+
+#scoreTextPlayer1,
+#scoreTextPlayer2 {
+font-size: 22px;
+}
+
+#scoreBackButton {
+position: absolute;
+right: 32%;
+bottom: 10%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+padding-bottom: 4px;
+font-size: 19px;
+color: rgba(254, 136, 25, 0.80);
+border: 2px solid white;
+width: 120px;
+height: 40px;
+border-radius: 10px;
+background-color: white;
+}
+
+#scoreBackButton:hover {
+cursor: pointer;
+background-color: rgba(254, 136, 25, 0.80);
+color: white;
+}
+
+#scoreModal {
+position: absolute;
+left: 5%;
+top: 30%;
+width: 330px;
+height: 300px;
+background-color: rgba(254, 136, 25);
+border: 2px solid white;
+border-radius: 25px;
+}
+
+#player1ParButton.parButtonActive,
+#player2ParButton.parButtonActive {
+color: rgb(254, 136, 25);
+background-color: white;
+}
+
+#scorePlayer1Text {
+position: absolute;
+top: 5%;
+left: 9%;
+color: white;
+font-size: 24px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 0.5px;
+}
+
+#scorePlayer2Text {
+position: absolute;;
+top: 5%;
+left: 62%;
+color: white;
+font-size: 24px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: 0.5px;
+}
+
+#scorePlayer1,
+#scorePlayer2 {
+position: absolute;
+font-size: 18px;
+color: white;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+color: rgb(255, 217, 103);
+-webkit-text-stroke: 0px black;
+text-shadow: 0.5px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+#scorePlayer2 {
+left: 62%;
+top: 25%;
+}
+
+#scorePlayer1 {
+left: 10%;
+top: 25%;
+}
+
+
+/* Reset Modal Menu Overlay */
+
+#resetMenuOverlay {
+position: fixed;
+inset: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 10;
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+background: rgba(255, 255, 255, 0.1);
+}
+
+#resetMenuSureText {
+position: absolute;
+font-size: 32px;
+top: 8%;
+left: 20%;
+color: white;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+color: rgb(255, 217, 103);
+-webkit-text-stroke: 0px black;
+text-shadow: 0.5px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+#resetMenuContainer {
+position: absolute;
+right: 10%;
+top: 35%;
+width: 300px;
+height: 200px;
+background-color: rgba(254, 136, 25);
+border: 2px solid white;
+border-radius: 25px;
+}
+
+#jaMenuResetButton {
+position: absolute;
+left: 10%;
+bottom: 20%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+padding-bottom: 4px;
+font-size: 19px;
+color: rgba(254, 136, 25, 0.80);
+border: 2px solid white;
+width: 110px;
+height: 40px;
+border-radius: 10px;
+background-color: white;
+}
+
+#jaMenuResetButton:hover {
+cursor: pointer;
+background-color: rgba(254, 136, 25, 0.80);
+color: white;
+}
+
+#nejMenuResetButton {
+position: absolute;
+right: 10%;
+bottom: 20%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+padding-bottom: 4px;
+font-size: 19px;
+color: rgba(254, 136, 25, 0.80);
+border: 2px solid white;
+width: 110px;
+height: 40px;
+border-radius: 10px;
+background-color: white;
+}
+
+#nejMenuResetButton:hover {
+cursor: pointer;
+background-color: rgba(254, 136, 25, 0.80);
+color: white;
+}
+
+
+
+/* Buttons / Shared Components */
+
+/* Responsive / Mobile */
+
+.coursemap {
+display: block;
+}
