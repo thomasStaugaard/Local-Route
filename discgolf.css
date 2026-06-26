@@ -1235,6 +1235,14 @@ font-size: 19px;
 font-size: 22px;
 }
 
+.scoreToParPlusScore {
+color: rgb(117, 196, 103) !important;
+}
+
+.scoreToParMinusScore {
+color: red !important;
+}
+
 #scoreBackButton {
 position: absolute;
 right: 32%;

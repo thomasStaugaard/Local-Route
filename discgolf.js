@@ -135,6 +135,7 @@ hole5Button, hole6Button, hole7Button, hole8Button,
 hole9Button, hole10Button, hole11Button, hole12Button,
 hole13Button, hole14Button, hole15Button, hole16Button,
 hole17Button, hole18Button ];
+
 const holeOverviewButtons = [
 hole1OverviewButton, hole2OverviewButton, hole3OverviewButton, hole4OverviewButton,
 hole5OverviewButton, hole6OverviewButton, hole7OverviewButton, hole8OverviewButton,
@@ -360,13 +361,28 @@ if (currentPlayer.playerNumber === 1) {
 player1TotalThrowsElement.textContent = totalThrows;
 player1TotalParElement.textContent = totalPar;
 player1TotalScoreToParElement.textContent = totalScoreToPar;
+player1TotalScoreToParElement.classList.remove('scoreToParPlusScore');
+player1TotalScoreToParElement.classList.remove('scoreToParMinusScore');
+if (totalScoreToPar < 0) {
+player1TotalScoreToParElement.classList.add('scoreToParPlusScore');
+} else if (totalScoreToPar > 0) {
+player1TotalScoreToParElement.classList.add('scoreToParMinusScore');
+}
 } else if (currentPlayer.playerNumber === 2) {
 player2TotalThrowsElement.textContent = totalThrows;
 player2TotalParElement.textContent = totalPar;
 player2TotalScoreToParElement.textContent = totalScoreToPar;
+player2TotalScoreToParElement.classList.remove('scoreToParPlusScore');
+player2TotalScoreToParElement.classList.remove('scoreToParMinusScore');
+if (totalScoreToPar < 0) {
+player2TotalScoreToParElement.classList.add('scoreToParPlusScore');
+} else if (totalScoreToPar > 0) {
+player2TotalScoreToParElement.classList.add('scoreToParMinusScore');
 }
 }
 }
+}
+
 
 // Reset function
 function resetGame() {
